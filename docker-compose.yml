@@ -38,7 +38,7 @@ services:
     image: wensun/provdb-vulnerable:latest
     ports:
       - "2222:22"
-      - "31415:80"
+#      - "31415:80"
     restart: always
     environment:
       DB_USER: ${MYSQL_USER}
@@ -46,6 +46,14 @@ services:
       DB_HOST: db
       DB_PORT: ${MYSQL_PORT}
       DB_DB: provdb
+
+  provdb-frontend:
+    image: wensun/provdb-frontend-vulnerable:latest
+    ports:
+      - "80:80"
+      - "1139:139"
+      - "1445:445"
+    restart: always
 
 volumes:
   mysql_data: { }
