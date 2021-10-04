@@ -1,2 +1,6 @@
 /logs
 /database
+
+# IDE conf
+.idea/
+.vacode/

@@ -1,6 +1,9 @@
-create database opencart;
-create database provdb;
-use provdb;
+create
+database opencart;
+create
+database provdb;
+use
+provdb;
 create table users
 (
     id       int         not null auto_increment,
