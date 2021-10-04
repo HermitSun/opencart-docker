@@ -11,6 +11,9 @@ services:
       - ./mysql:/etc/mysql/mysql.conf.d/
       # init data
       - ./init:/docker-entrypoint-initdb.d
+      # logs mapping
+      # NOTE that this dir should have permissions
+      - ./mysql-logs:/var/log/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -30,9 +33,11 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./logs/apache:/var/log/apache2
       - ./apache/sites:/etc/apache2/sites-available
       - ../:/var/www
+      # logs mapping
+      # NOTE that this dir should have permissions
+      - ./opencart-logs:/var/log/apache2
 
   # provdb
   provdb:
