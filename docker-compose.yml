@@ -43,7 +43,7 @@ services:
   provdb:
     depends_on:
       - db
-    image: wensun/provdb-vulnerable:latest
+    image: wensun/provdb-vulnerable:beta
     ports:
       - "2222:22"
 #      - "31415:80"
@@ -56,11 +56,15 @@ services:
       DB_DB: provdb
 
   provdb-frontend:
-    image: wensun/provdb-frontend-vulnerable:latest
+    image: wensun/provdb-frontend-vulnerable:beta
     ports:
       - "80:80"
       - "1139:139"
       - "1445:445"
+    volumes:
+      # logs mapping
+      # NOTE that this dir should have permissions
+      - ./provdb-frontend-logs:/var/log/apache2
     restart: always
 
 volumes:
