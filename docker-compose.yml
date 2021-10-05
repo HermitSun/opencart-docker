@@ -46,6 +46,9 @@ services:
     ports:
       - "2222:22"
 #      - "31415:80"
+    volumes:
+      # logs mapping
+      - ./provdb-logs:/var/log/provdb
     restart: always
     environment:
       DB_USER: ${MYSQL_USER}
