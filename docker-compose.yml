@@ -36,7 +36,6 @@ services:
       - ./apache/sites:/etc/apache2/sites-available
       - ../:/var/www
       # logs mapping
-      # NOTE that this dir should have permissions
       - ./opencart-logs:/var/log/apache2
 
   # provdb
@@ -63,7 +62,6 @@ services:
       - "1445:445"
     volumes:
       # logs mapping
-      # NOTE that this dir should have permissions
       - ./provdb-frontend-logs:/var/log/apache2
     restart: always
 
