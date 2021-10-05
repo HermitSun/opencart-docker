@@ -10,6 +10,7 @@ EXPOSE 80 443
 
 WORKDIR /var/www/
 
+ADD 10-log.conf /opt/docker/etc/httpd/conf.d/10-log.conf
 ADD vhost.conf /etc/apache2/sites-enabled/vhost.conf
 
 ENTRYPOINT ["/opt/docker/bin/entrypoint.sh"]
