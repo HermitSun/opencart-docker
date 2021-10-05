@@ -3,7 +3,9 @@ FROM php:7.3-fpm
 ADD ./opencart.ini /usr/local/etc/php/conf.d
 ADD ./opencart.pool.conf /usr/local/etc/php-fpm.d/
 
-RUN apt-get update && apt-get install -y \
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y \
 	libfreetype6-dev \
 	libjpeg62-turbo-dev \
 	libmcrypt-dev \
