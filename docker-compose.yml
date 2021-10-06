@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
       thusword:
-        ipv4_address: 172.23.0.5
+        ipv4_address: 172.23.0.14
 
   # opencart
   php-fpm:
@@ -28,6 +28,9 @@ services:
       - "9000"
     volumes:
       - ../:/var/www
+    networks:
+      thusword:
+        ipv4_address: 172.23.0.99
 
   apache:
     depends_on:
@@ -42,7 +45,7 @@ services:
       - ./opencart-logs:/var/log/apache2
     networks:
       thusword:
-        ipv4_address: 172.23.0.4
+        ipv4_address: 172.23.0.13
 
   # provdb
   provdb:
@@ -64,7 +67,7 @@ services:
       DB_DB: provdb
     networks:
       thusword:
-        ipv4_address: 172.23.0.3
+        ipv4_address: 172.23.0.12
 
   provdb-frontend:
     image: wensun/provdb-frontend-vulnerable:beta
@@ -78,7 +81,7 @@ services:
     restart: always
     networks:
       thusword:
-        ipv4_address: 172.23.0.2
+        ipv4_address: 172.23.0.11
 
 volumes:
   mysql_data: { }
