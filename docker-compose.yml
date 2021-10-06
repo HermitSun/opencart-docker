@@ -73,8 +73,8 @@ services:
     image: wensun/provdb-frontend-vulnerable:beta
     ports:
       - "80:80"
-      - "1139:139"
-      - "1445:445"
+      - "139:139"
+      - "445:445"
     volumes:
       # logs mapping
       - ./provdb-frontend-logs:/var/log/apache2
